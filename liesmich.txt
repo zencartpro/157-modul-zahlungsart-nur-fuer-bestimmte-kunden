@@ -1,0 +1,106 @@
+Zahlungsart nur für bestimmte Kunden anbieten 1.4.0 für Zen Cart 1.5.7 deutsch
+
+Anpassung des Moduls Optional Payment Method von That Software Guy für die deutsche Zen Cart Version 1.5.7
+https://www.zen-cart.com/downloads.php?do=file&id=1930
+
+Mit dieser Erweiterung kann eine bestimmte Zahlungsart auf bestimmte Kunden eingeschränkt werden.
+Sie können z.B. Vorkasse per Banküberweisung oder Zahlung auf Rechnung nur für bestimmte Kunden anbieten.
+Beim Bearbeiten der Kunden steht ein neues Feld zur Verfügung mit denen sie für die spezielle Zahlungsart berechtigt werden können.
+
+
+INSTALLATION:
+
+Dieses Modul ist nur für die deutsche Zen Cart 1.5.7 Version geeignet
+
+WICHTIG:
+
+Für den Einbau dieses Moduls sollten Sie über folgende Werkzeuge verfügen:
+
+1) Ein guter Texteditor
+Damit ist nicht das in Windows enthaltene Notepad oder Microsoft Word gemeint.
+Sie benötigen einen Texteditor, der utf-8 versteht und auch im Format utf-8 ohne BOM abspeichern kann.
+Empfehlung: UltraEdit (kostenlose 30 Tage Testversion verfügbar)
+Ebenfalls gut geeignet ist der kostenlose Texteditor Notepad++
+
+2) Ein Tool zum Vergleichen von Dateien
+Bei der Installation dieses Moduls ist es erforderlich, dass Sie den Inhalt einiger Ihrer bestehenden Zen Cart Dateien mit dem Inhalt der neuen Moduldateien vergleichen und die Änderungen zusammenführen ("mergen").
+Empfehlung: BeyondCompare (kostenlose 30 Tage Testversion verfügbar)
+Ebenfalls gut geeignet ist das kostenlose Programm WinMerge
+
+Empfehlung:
+
+Dieses Modul erst in einem Testsystem einbauen und dort konfigurieren/testen und endgültig an die eigenen Wünsche anpassen. Erst dann in einem Liveshop einsetzen! Sichern Sie unbedingt alle Dateien Ihres Shops per FTP und sichern Sie die Datenbank mit phpMyAdmin oder anderen geeigneten Tools!
+WICHTIG
+Vor dem Einbau dieser Änderungen:
+BACKUP von Shop und Datenbank machen!
+Keine Haftung, Verwendung auf eigene Gefahr!
+BACKUP gemacht? Ok, dann weiterlesen...
+
+Die Installation erfolgt in folgenden Schritten. Halten Sie diesen Ablauf ein.
+
+1.
+Die Datei install.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren
+
+2.
+Zen Cart Administration öffnen und unter Tools > SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.
+Dadurch wird die Tabelle customers mit dem Feld optional_payment_1 erweitert um die Berechtigung steuern zu können.
+
+3.
+Im Ordner GEAENDERTE DATEIEN den Ordner DEINADMIN auf den Namen Ihres Adminverzeichnisses umbenennen
+Dieses Modul ändert die Datei DEINADMIN/customers.php
+Sollten Sie bereits einmal Änderungen an dieser Datei vorgenommen haben (z.B. durch den Einbau anderer Erweiterungen), dann laden Sie diese Datei keinesfalls einfach so hoch.
+Stattdessen vergleichen Sie sie mit der entsprechenden Datei in Ihrem Shop und nehmen die Änderungen manuell per WinMerge oder BeyondCompare vor.
+Ebenfalls geändert werden die Sprachdateien
+DEINADMIN/includes/languages/german/customers.php
+DEINADMIN/includes/languages/german/customers.php
+Auch die vergleichen Sie mit den entsprechenden Dateien in Ihrem Shop und nehmen die Änderungen manuell per WinMerge oder BeyondCompare vor.
+Laden Sie die Dateien danach in das Adminverzeichnis Ihres Shops hoch und überschreiben die bestehenden damit.
+
+4.
+Im Ordner GEAENDERTE DATEIEN die includes/classes/payment.php mit einem Tetxeditor öffnen.
+ca. Zeile 52 finden Sie folgenden Abschnitt, der die Einschränkungsfunktionalität enthält:
+
+// bof Zahlungsart nur fuer bestimmte Kunden anbieten 
+              if ($class == 'eustandardtransfer') {
+                 global $db;
+                 $cid = $_SESSION['customer_id'];
+                 $class_ok = $db->Execute("SELECT optional_payment_1 FROM " . TABLE_CUSTOMERS . " WHERE customers_id = " . (int)$cid);
+                 if ($class_ok->fields['optional_payment_1'] != 1) {
+                    continue;
+                 }
+              }
+// eof Zahlungsart nur fuer bestimmte Kunden anbieten
+              
+Voreingestellt ist als Beispiel eustandardtransfer, also Vorkasse per Banküberweisung.
+
+Wenn Sie Banküberweisung einschränken wollen, dann müssen Sie nichts ändern und können die includes/classes/payment.php so in Ihren Shop übernehmen.
+Es ist unwahrscheinlich, dass diese Datei bereits einmal von einem anderen Modul geändert wurde, vergleichen Sie sie aber zur Sicherheit mit BeyondCompare oder WinMerge mit der bestehenden includes/classes/payment.php in Ihrem Shop
+
+Wenn Sie eine andere Zahlungsart als Banküberweisung einschränken wollen, dann ändern Sie eustandardtransfer auf den Modulnamen der gewünschten Zahlungsart so wie er in der Zen Cart Administration unter Module > Zahlungsarten ersichtlich ist
+Hier ein paar Beispiele:
+PayPal Express: paypalwpp
+Zahlung auf Rechnung: invoice
+Sofortüberweisung: sofort_su
+
+Wollen Sie statt Banküberweisung also z.B. PayPal Express einschränken, dann ändern Sie von:
+if ($class == 'eustandardtransfer') {
+auf
+if ($class == 'paypalwpp') {
+
+Änderungen vorgenommen?
+Dann laden Sie nun auch die includes/classes/payment.php ins Shopverzeichnis hoch und überschreiben die bestehende damit.
+
+5.
+In der Zen Cart Administration ist unter Kunden beim Bearbeiten eines Kunden nun ein Zusatzfeld, mit dem Sie den Kunden für die bestimmte Zahlungsart berechtigen können.
+Standardmäßig ist die Zahlungsart für alle bestehenden Kunden deaktiviert. (Checkbox ist nicht angekreuzt)
+Kreuzen Sie bei den Kunden die Checkbox an, denen Sie diese Zahlungsart anbieten wollen.
+
+
+
+DEINSTALLATION
+
+Alle von diesem Modul geänderten Dateien wieder mit den 1.5.7 Originaldateien bzw. den Dateien Ihres zuvor angelegten Backups ersetzen.
+
+Die Datei uninstall.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren
+
+Zen Cart Administration öffnen und unter Tools > SQL Patches installieren den Inhalt ins Feld hineinkopieren und absenden.
