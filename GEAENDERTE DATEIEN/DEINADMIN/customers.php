@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: customers.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-02-25 19:16:51Z webchills $
+ * @version $Id: customers.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-03-24 08:46:51Z webchills $
  */
 require('includes/application_top.php');
 
@@ -264,7 +264,7 @@ if (zen_not_null($action)) {
           array('fieldName' => 'customers_lastname', 'value' => $customers_lastname, 'type' => 'stringIgnoreNull'),
           array('fieldName' => 'optional_payment_1', 'value'=>$optional_payment_1, 'type'=>'stringIgnoreNull'),
           array('fieldName' => 'customers_email_address', 'value' => $customers_email_address, 'type' => 'stringIgnoreNull'),
-          array('fieldName' => 'customers_telephone', 'value' => $customers_telephone, 'type' => 'stringIgnoreNull'),
+          array('fieldName' => 'customers_telephone', 'value' => $customers_telephone, 'type' => 'stringIgnoreNull'),          
           array('fieldName' => 'customers_group_pricing', 'value' => $customers_group_pricing, 'type' => 'stringIgnoreNull'),
           array('fieldName' => 'customers_newsletter', 'value' => $customers_newsletter, 'type' => 'stringIgnoreNull'),
           array('fieldName' => 'customers_email_format', 'value' => $customers_email_format, 'type' => 'stringIgnoreNull'),

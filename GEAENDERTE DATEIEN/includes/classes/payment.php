@@ -6,7 +6,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: payment.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-02-25 19:14:16Z webchills $
+ * @version $Id: payment.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-03-24 08:47:16Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -20,8 +20,8 @@ class payment extends base {
   var $modules, $selected_module, $doesCollectsCardDataOnsite;
 
   function __construct($module = '') {
-    global $PHP_SELF, $language, $credit_covers, $messageStack;
-    $this->doesCollectsCardDataOnsite = false;
+      global $PHP_SELF, $language, $credit_covers, $messageStack;
+      $this->doesCollectsCardDataOnsite = false;
 
       if (defined('MODULE_PAYMENT_INSTALLED') && !empty(MODULE_PAYMENT_INSTALLED)) {
         $this->modules = explode(';', MODULE_PAYMENT_INSTALLED);
@@ -211,7 +211,7 @@ class payment extends base {
 
   function pre_confirmation_check() {
     global $credit_covers, $payment_modules;
-    if (empty($this->selected_module)) return; 
+    if (empty($this->selected_module)) return;
     if (!is_array($this->modules)) return;
     if (!is_object($GLOBALS[$this->selected_module]) || $GLOBALS[$this->selected_module]->enabled != true) return;
     $function = __FUNCTION__;
