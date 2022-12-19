@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: customers.php 2022-02-25 19:20:16Z webchills $
+ * @version $Id: customers.php 2022-12-19 10:02:16Z webchills $
  */
 
 define('HEADING_TITLE', 'Customers');
@@ -34,7 +34,7 @@ define('TEXT_INFO_NUMBER_OF_ORDERS', 'Number of Orders:');
 define('TEXT_INFO_LIFETIME_VALUE', 'Customer Lifetime Value:');
 define('TEXT_INFO_LAST_ORDER','Last Order:');
 define('TEXT_INFO_ORDERS_TOTAL', 'Total:');
-define('CUSTOMERS_REFERRAL', 'Customer Referral<br />1st Discount Coupon');
+define('CUSTOMERS_REFERRAL', 'Customer Referral<br>1st Discount Coupon');
 define('TEXT_INFO_GV_AMOUNT', 'GV Balance');
 
 define('ENTRY_NONE', 'None');

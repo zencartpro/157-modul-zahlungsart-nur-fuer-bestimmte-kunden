@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: customers.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-03-24 08:46:51Z webchills $
+ * @version $Id: customers.php for Zahlungsart nur fuer bestimmte Kunden anbieten 2022-12-19 10:00:51Z webchills $
  */
 require('includes/application_top.php');
 
@@ -477,7 +477,7 @@ if (zen_not_null($action)) {
             var customers_telephone = document.customers.customers_telephone.value;
 
   <?php if (ACCOUNT_GENDER == 'true') { ?>
-              if (document.customers.customers_gender[0].checked || document.customers.customers_gender[1].checked) {
+              if (document.customers.customers_gender[0].checked || document.customers.customers_gender[1].checked || document.customers.customers_gender[2].checked) {
               } else {
                   error_message = error_message + '<?php echo JS_GENDER; ?>';
                   error = 1;
@@ -1030,7 +1030,7 @@ if (zen_not_null($action)) {
           <fieldset>
             <legend><?php echo ADDRESS_BOOK_TITLE; ?></legend>
             <div class="alert forward"><?php echo sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES); ?></div>
-            <br class="clearBoth" />
+            <br class="clearBoth">
             <?php
             /**
              * Used to loop thru and display address book entries
@@ -1038,7 +1038,7 @@ if (zen_not_null($action)) {
             foreach ($addressArray as $addresses) {
               ?>
               <h3 class="addressBookDefaultName"><?php echo zen_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?><?php if ($addresses['address_book_id'] == zen_get_customers_address_primary($_GET['cID'])) echo '&nbsp;' . PRIMARY_ADDRESS; ?></h3>
-              <address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br />'); ?></address>
+              <address><?php echo zen_address_format($addresses['format_id'], $addresses['address'], true, ' ', '<br>'); ?></address>
 
               <br class="clearBoth">
             <?php } // end list ?>
@@ -1439,6 +1439,7 @@ if (zen_not_null($action)) {
                             zen_catalog_href_link
                             (FILENAME_LOGIN, '', 'SSL') . '" method="post">';
                         $hiddenFields = zen_draw_hidden_field('email_address', $cInfo->customers_email_address);
+                        $hiddenFields .= zen_draw_hidden_field('empadminlogin', 'allowed');
                         if  (defined('EMP_LOGIN_AUTOMATIC') && EMP_LOGIN_AUTOMATIC == 'true' && ENABLE_SSL_CATALOG == 'true') {
                             $secret = zen_update_customers_secret($cInfo->customers_id);
                             $timestamp = time();
