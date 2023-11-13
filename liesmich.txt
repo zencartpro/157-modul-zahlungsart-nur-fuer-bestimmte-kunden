@@ -1,4 +1,4 @@
-Zahlungsart nur für bestimmte Kunden anbieten 1.4.1 für Zen Cart 1.5.7 deutsch
+Zahlungsart nur für bestimmte Kunden anbieten 1.5.0 für Zen Cart 1.5.7 deutsch
 
 Anpassung des Moduls Optional Payment Method von That Software Guy für die deutsche Zen Cart Version 1.5.7
 https://www.zen-cart.com/downloads.php?do=file&id=1930
@@ -10,7 +10,9 @@ Beim Bearbeiten der Kunden steht ein neues Feld zur Verfügung mit denen sie fü
 
 INSTALLATION:
 
-Dieses Modul ist nur für die deutsche Zen Cart 1.5.7 Version geeignet
+Dieses Modul ist nur für die deutsche Zen Cart 1.5.7g Version geeignet.
+Stellen Sie sicher, dass Sie Ihren Shop auf 1.5.7g aktualisiert haben, bevor Sie dieses Modul installieren.
+Die mitgelieferten geänderten Dateien dieses Moduls sind auf dem Stand von 1.5.7g!
 
 WICHTIG:
 
@@ -99,7 +101,7 @@ Kreuzen Sie bei den Kunden die Checkbox an, denen Sie diese Zahlungsart anbieten
 
 DEINSTALLATION
 
-Alle von diesem Modul geänderten Dateien wieder mit den 1.5.7 Originaldateien bzw. den Dateien Ihres zuvor angelegten Backups ersetzen.
+Alle von diesem Modul geänderten Dateien wieder mit den 1.5.7g Originaldateien bzw. den Dateien Ihres zuvor angelegten Backups ersetzen.
 
 Die Datei uninstall.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren
 
