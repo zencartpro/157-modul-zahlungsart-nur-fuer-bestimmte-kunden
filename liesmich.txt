@@ -1,6 +1,6 @@
-Zahlungsart nur für bestimmte Kunden anbieten 1.5.0 für Zen Cart 1.5.7 deutsch
+Zahlungsart nur für bestimmte Kunden anbieten 1.5.1 für Zen Cart 1.5.7 deutsch
 
-Anpassung des Moduls Optional Payment Method von That Software Guy für die deutsche Zen Cart Version 1.5.7
+Anpassung des Moduls Optional Payment Method von That Software Guy für die deutsche Zen Cart Version 1.5.7h
 https://www.zen-cart.com/downloads.php?do=file&id=1930
 
 Mit dieser Erweiterung kann eine bestimmte Zahlungsart auf bestimmte Kunden eingeschränkt werden.
@@ -10,9 +10,9 @@ Beim Bearbeiten der Kunden steht ein neues Feld zur Verfügung mit denen sie fü
 
 INSTALLATION:
 
-Dieses Modul ist nur für die deutsche Zen Cart 1.5.7g Version geeignet.
-Stellen Sie sicher, dass Sie Ihren Shop auf 1.5.7g aktualisiert haben, bevor Sie dieses Modul installieren.
-Die mitgelieferten geänderten Dateien dieses Moduls sind auf dem Stand von 1.5.7g!
+Dieses Modul ist nur für die deutsche Zen Cart 1.5.7h Version geeignet.
+Stellen Sie sicher, dass Sie Ihren Shop auf 1.5.7h aktualisiert haben, bevor Sie dieses Modul installieren.
+Die mitgelieferten geänderten Dateien dieses Moduls sind auf dem Stand von 1.5.7h!
 
 WICHTIG:
 
@@ -54,7 +54,7 @@ Sollten Sie bereits einmal Änderungen an dieser Datei vorgenommen haben (z.B. d
 Stattdessen vergleichen Sie sie mit der entsprechenden Datei in Ihrem Shop und nehmen die Änderungen manuell per WinMerge oder BeyondCompare vor.
 Ebenfalls geändert werden die Sprachdateien
 DEINADMIN/includes/languages/german/customers.php
-DEINADMIN/includes/languages/german/customers.php
+DEINADMIN/includes/languages/english/customers.php
 Auch die vergleichen Sie mit den entsprechenden Dateien in Ihrem Shop und nehmen die Änderungen manuell per WinMerge oder BeyondCompare vor.
 Laden Sie die Dateien danach in das Adminverzeichnis Ihres Shops hoch und überschreiben die bestehenden damit.
 
@@ -82,7 +82,6 @@ Wenn Sie eine andere Zahlungsart als Banküberweisung einschränken wollen, dann
 Hier ein paar Beispiele:
 PayPal Express: paypalwpp
 Zahlung auf Rechnung: invoice
-Sofortüberweisung: sofort_su
 
 Wollen Sie statt Banküberweisung also z.B. PayPal Express einschränken, dann ändern Sie von:
 if ($class == 'eustandardtransfer') {
@@ -101,7 +100,7 @@ Kreuzen Sie bei den Kunden die Checkbox an, denen Sie diese Zahlungsart anbieten
 
 DEINSTALLATION
 
-Alle von diesem Modul geänderten Dateien wieder mit den 1.5.7g Originaldateien bzw. den Dateien Ihres zuvor angelegten Backups ersetzen.
+Alle von diesem Modul geänderten Dateien wieder mit den 1.5.7h Originaldateien bzw. den Dateien Ihres zuvor angelegten Backups ersetzen.
 
 Die Datei uninstall.sql im Ordner SQL mit einem Texteditor öffen und den Inhalt kopieren
 
